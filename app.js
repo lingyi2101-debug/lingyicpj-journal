@@ -5,7 +5,7 @@ const CATS=[{slug:"course-review",title:"COURSE REVIEW",short:"CLASS",icon:"📚
 const PAGES=new Map(),GALLERIES=new Map();let gid=0;
 const esc=s=>String(s??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
 const internal=path=>BASE+String(path||"/").replace(/^\/+/,"");
-const asset=path=>path?BASE+String(path).replace(/^\/+/,""):"";
+const asset=path=>{if(!path)return "";let p=String(path).replace(/^\/+/,"");if(p.startsWith("assets/"))p=p.replace(/\.(png|jpe?g|avif)$/i,".webp");return BASE+p;};
 const href=path=>!path?"#":/^https?:\/\//i.test(path)?path:path.startsWith("/")?internal(path):path;
 function a(path,markup,cls=""){const ext=/^https?:\/\//i.test(path||"");return '<a href="'+esc(href(path))+'" class="'+esc(cls)+'"'+(ext?' target="_blank" rel="noopener noreferrer"':' data-nav')+'>'+markup+'</a>';}
 function shell(html,title=""){document.title="CPJ — A Curious Designer's Journal"+(title?" · "+title:"");return '<div class="site-wrap"><header class="site-nav">'+a("/",'<span class="brand-icon">Z</span><span>LINGYI ZHANG’S CPJ</span>',"brand")+'<nav class="nav-links" aria-label="Main navigation">'+a("/cpj/about-me","ABOUT ME")+a("/cpj/contents","CONTENTS")+'</nav></header>'+html+'<footer class="site-footer"><strong>KEEP ASKING QUESTIONS.</strong><p>Made with curiosity and a little chaos. © 2026 Lingyi</p></footer></div>';}
