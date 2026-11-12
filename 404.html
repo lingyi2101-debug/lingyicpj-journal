@@ -1,0 +1,10 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>Redirecting to CPJ</title>
+<script>
+  var url = location.pathname + location.search + location.hash;
+  var base = location.pathname.split('/').filter(Boolean)[0] || '';
+  var prefix = '/' + base + '/';
+  var rest = location.pathname.slice(prefix.length);
+  location.replace(prefix + '?route=' + encodeURIComponent('/' + rest));
+</script>
