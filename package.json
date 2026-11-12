@@ -1,0 +1,17 @@
+{
+  "name": "lingyi-cpj-journal",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A Curious Designer's Creative Process Journal",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "npx http-server . -p 5173"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "sharp": "^0.33.5"
+  }
+}
